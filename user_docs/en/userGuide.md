@@ -1677,7 +1677,7 @@ Once the magnifier is enabled, you can use the following keyboard commands to co
 | Name | Key | Description |
 |---|---|---|
 | Toggle the magnifier on and off | `NVDA+shift+w` | Enables or disables the magnifier |
-| Increase the magnification level | `NVDA+shift+equals` | Increases the zoom level. Starts the magnifier if it's not already running. |
+| Increase the magnification level, or start the magnifier | `NVDA+shift+equals` | Increases the zoom level. Starts the magnifier if it's not already running. |
 | Decrease the magnification level | `NVDA+shift+minus` | Decreases the zoom level |
 | Cycle color filters | `NVDA+shift+i` | Cycles through the available color filters (normal, grayscale, inverted) |
 | Cycle tracking mode | None | Cycles through tracking modes (center, relative) |
@@ -2915,6 +2915,22 @@ Setting the value too high may cause the battery of the sound output device to d
 
 You can set the time to zero in order to disable this feature.
 
+##### White noise volume {#WhiteNoiseVolume}
+
+This edit box sets the volume of very quiet white noise that NVDA plays while keeping the audio device awake after speech.
+
+Some audio drivers treat the silence NVDA plays to keep the device awake as nothing to play, and trim it.
+This can cut off the end of speech, even when the audio device is kept awake.
+Playing a small amount of white noise instead of silence can stop the driver from trimming it.
+
+The value ranges from 0 to 100.
+The default is 0, which disables the white noise.
+White noise can be loud, especially on headphones, so start with a low value such as 1 and increase it only if needed.
+
+If the end of speech is still cut off, your audio driver or its audio enhancements may be the cause.
+For example, on some laptops with Realtek audio drivers, disabling Windows audio enhancements for the output device in the Windows Sound settings has fixed the problem.
+Updating your audio driver may also help.
+
 #### Privacy and Security {#PrivacyAndSecuritySettings}
 
 This category allows you to adjust settings that affect your privacy and security while using NVDA.
@@ -3485,6 +3501,7 @@ This category contains the following options:
 ##### Maximum Number of Characters on One Line {#BrowseModeSettingsMaxLength}
 
 This field sets the maximum length of a line in browse mode (in characters).
+It can be set from 0 to 1000 characters. If set to 0, lines are not split by length anymore, but rather by the full length of the element in focus.
 
 ##### Maximum Lines Per Page {#BrowseModeSettingsPageLines}
 
@@ -4529,7 +4546,11 @@ You can add new symbols by pressing the Add button.
 In the dialog that appears, enter the symbol and press the OK button.
 Then, change the fields for the new symbol as you would for other symbols.
 
-You can remove a symbol you previously added by pressing the Remove button.
+You can remove a symbol you previously added by using:
+
+* the Remove button,
+* the `delete` key, or,
+* the application key on the selected symbol, and activating the Remove option in the context menu.
 
 When you are finished, press the OK button to save your changes or the Cancel button to discard them.
 
